@@ -16,6 +16,6 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
