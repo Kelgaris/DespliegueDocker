@@ -8,7 +8,12 @@ jobs:
     steps: 
       - name: checkout
         uses: actions/checkout@v4
+
+      - name: Iniciar sesion en docker
+        run: echo " ${{ secrets.DOCKER_HUB_TOKEN}}" | docker login -u kelgaris --password-stdin      
+
       - name: construir imagen
         run: docker build . -t kelgaris/ejemplo-actions:latest
+
       - name: subir imagen
         run: docker push kelgaris/ejemplo-actions:latest
