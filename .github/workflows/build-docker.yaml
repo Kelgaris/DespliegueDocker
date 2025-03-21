@@ -1,6 +1,9 @@
 name: Crear y subir imagen docker
-on: 
-  [workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   publish_images:
@@ -13,7 +16,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_HUB_TOKEN}}" | docker login -u "kelgaris" --password-stdin
 
       - name: construir imagen
-        run: docker build . -t kelgaris/ejemplo-actions:latest
+        run: docker build . -t kelgaris/ejemplo-automatico:latest
 
       - name: subir imagen
-        run: docker push kelgaris/ejemplo-actions:latest
+        run: docker push kelgaris/ejemplo-automatico:latest
